@@ -2,6 +2,9 @@
 A comprehensive list of new ES features, including ES6, ES7, ES8, ES9, ES10, ...
 
 * [ES6 feature list and examples](ES6.MD)
+* [ES7 feature list and examples](ES7.MD)
+* [ES8 feature list and examples](ES8.MD)
+* [ES9 feature list and examples](ES9.MD)
 * [ES NEXT feature proposal list and examples](ESNEXT.MD)
 
 ---
