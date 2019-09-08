@@ -1,4 +1,4 @@
-# ECMAScript 6 <sup>[credit](http://git.io/es6features)</sup>
+# ECMAScript 6 (ES2015)<sup>[credit](http://git.io/es6features)</sup>
 
 See the [ES6 standard](http://www.ecma-international.org/ecma-262/6.0/) for full specification of the ECMAScript 6 language.
 
