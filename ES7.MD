@@ -1,10 +1,11 @@
-You may want to checkout [jsfeatures.in](http://jsfeatures.in) as well.
+# ECMAScript 7 <sup>[credit](https://github.com/hemanth/es-next)</sup>
 
-__List of ES7 features:__
+See the [ES7 standard](http://www.ecma-international.org/ecma-262/7.0/) for full specification of the ECMAScript 7 language.
+
+ES7 includes the following new features:
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 
 - [Exponentiation Operator](#exponentiation-operator)
 - [Async functions](#async-functions)
