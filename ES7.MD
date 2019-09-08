@@ -8,7 +8,7 @@ ES7 includes the following new features:
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Exponentiation Operator](#exponentiation)
-- [Async functions](#async-functions)
+- [Async functions](#async-function)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
