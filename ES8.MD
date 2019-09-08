@@ -11,7 +11,7 @@ ES8 includes the following new features:
 - [Object.entries](#objectentries)
 - [Object.values](#objectvalues)
 - [Object.getOwnPropertyDescriptors](#objectgetownpropertydescriptors)
-- [Trailing commas in function syntax.](#trailing-commas-in-function-syntax)
+- [Trailing commas](#trailing-commas)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
