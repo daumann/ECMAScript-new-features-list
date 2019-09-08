@@ -27,6 +27,7 @@ Math.pow(5, 2)
 
 // ...is now
 5 ** 2
+// 5 ** 2 === 5 * 5
 ```
 
 ### `async function`
