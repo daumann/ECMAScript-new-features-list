@@ -7,11 +7,12 @@ ES7 includes the following new features:
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Exponentiation Operator](#exponentiation-operator)
+- [Exponentiation Operator](#exponentiation)
 - [Async functions](#async-functions)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+---
 
 ### `Exponentiation`
 A shorthand method to exponetiation has been introduced in JavaScript:
