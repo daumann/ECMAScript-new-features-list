@@ -34,291 +34,271 @@ ES7 includes the following new features:
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
-# Exponentiation Operator
-> Performs exponential calculation on operands. Same algorithm as `Math.pow(x, y)`
+### `Object.entries()`
 
-> Stage: Draft.
+`Object.entries` gives us the ability to get an object's enurmerable property pairs by returning an array of any given
+object's own eumberable properties. /ie: [key, value] pairs. Note that the order is the same as provided by the `for...in` loop.
 
-```js
+#### Syntax:
 
-let cubed = x => x ** 3;
+* `Object.entries(obj)`
+* **@params**: `obj`
+* **returns**: Array
 
-cubed(2) // 8;
+#### Examples:
+
+> basic example
+
+```javascript
+const obj = { self: 'that', norf: 'quux' }
+console.log(Object.entries(obj))
+
+// => [ ['self', 'that'], ['norf', 'quux'] ]
 ```
 
-# Async functions
-> Deferred Functions
+> array like object with random key ordering
+```javascript
+const obj = { 50: 'a', 1: 'b', 5: 'c' }
+console.log(Object.entries(obj)) 
 
-> Stage: Proposal.
+// => [ ['1', 'b'], ['5', 'c'], ['50', 'a'] ]
+```
 
-```js
-function wait(t){
-  return new Promise((r) => setTimeout(r, t));
+### `Object.values()`
+
+`Object.values` lets us return an array of a given object's own enumerable property values. Note that the order is the
+same as provided by the `for...in` loop.
+
+#### Syntax:
+
+* `Object.values(obj)`
+* **@params**: `obj`
+* **returns**: Array
+
+#### Examples:
+
+> basic example
+
+```javascript
+const obj = { a: 100, b: 200 }
+console.log(Object.values(obj))
+
+// => [100, 200]
+```
+
+> mixed
+```javascript
+const obj = { foo: 'foo', bar: [100, 200], baz: 55 }
+console.log(Object.values(obj)) 
+
+// => ['foo', [100, 200], 55 ]
+```
+
+> string
+```javascript
+const myStr = 'Lufthansa'
+console.log(Object.values(myStr))
+
+// => ["L", "u", "f", "t", "h", "a", "n", "s", "a"]
+```
+
+### `Array.prototype.includes`
+This one is a bit like `indexOf` and very useful to the language by relying on returinng true or false, not `0`. 
+
+
+#### Syntax:
+
+* `arr.inlcudes(searchEl[, fromIndex])`
+* **@searchElement**: the element to search for
+* **@fromIndex**: pos in array at which to begin searching
+* **returns**: Boolean
+
+#### Examples:
+
+> basic examples
+
+```javascript
+[1, 2, 3].includes(-1)                   // false
+[1, 2, 3].includes(1)                    // true
+[1, 2, 3].includes(3, 4)                 // false
+[1, 2, 3].includes(3, 3)                 // false
+[1, 2, NaN].includes(NaN)                // true
+['foo', 'bar', 'quux'].includes('foo')   // true
+['foo', 'bar', 'quux'].includes('norf')  // false
+```
+
+> if `fromIndex` is greater than or equal to the len of array, false is automatically returned
+```javascript
+let arr = ['x', 'y', 'z'];
+
+arr.includes('x', 3)    // false
+arr.includes('z', 100)  // false
+```
+
+### `String.prototype.padStart()`
+This method, `padStart()` pads the current string (applied from the left) with another string till the
+resulting string reaches the given optional length. 
+
+
+#### Syntax:
+
+* `str.padStart(targetLength [, padString])`
+* **@targetLength**: the length of resulting string once padding occurs
+* **@padString(Optional)**: the string to pad the current string with
+* **returns**: String
+
+#### Examples:
+
+> basic examples
+
+```javascript
+'xyz'.padStart(5)                 // "  xyz"
+'xyz'.padStart(10)                // "       xyz"
+'xyz'.padStart(6, 'hij')          // "hijxyz"
+'xyz'.padStart(8, '1')            // "11111xyz"
+
+const myStr = 'xyz'.padStart(22)  // "                   xyz"
+myStr.length                      // 22
+```
+
+### `String.prototype.padEnd()`
+This method, `padEnd()` pads the current string (applied from the right) with another string till the
+resulting string reaches the given optional length. 
+
+
+#### Syntax:
+
+* `str.padEnd(targetLength [, padString])`
+* **@targetLength**: the length of resulting string once padding occurs
+* **@padString(Optional)**: the string to pad the current string with
+* **returns**: String
+
+#### Examples:
+
+> basic examples
+
+```javascript
+'abc'.padEnd(10)           // "abc       "
+'abc'.padEnd(10, "foo")    // "abcfoofoof"
+'abc'.padEnd(6, "123456")  // "abc123"
+'abc'.padEnd(1)            // "abc"
+```
+
+### `Exponentiation`
+A shorthand method to exponetiation has been introduced in JavaScript:
+
+#### Syntax:
+
+* `operand` ** `operand`
+
+> basic examples
+```javascript
+Math.pow(5, 2)
+
+// ...is now
+5 ** 2
+```
+
+### `Trailing Commas`
+Trailing commas are now allowed in JavaScript - they are now ignored
+
+> trailing commas in array
+
+```javascript
+let arr = [
+  10,
+  20,
+  30,
+  40,
+  50,  
+]
+
+arr // [10, 20, 30, 40,  50]
+arr.length // 5 
+```
+
+> trailing commas in object
+```javascript
+const obj = {
+  trailing: 'comma',
+  is: 'allowed',
+  in: 'JavaScript..', 
+}
+```
+
+### `Object.getOwnPropertyDescriptors()`
+`Object.getOwnPropertyDescriptors()` returns all own property descriptors of a given object. A property descriptor
+is a record with one of the following attributes:
+
+* value
+* writable
+* get
+* set
+* configurable
+* enumerable
+
+```javascript
+let myObj = {
+  property1: 'foo',
+  property2: 'bar',
+  property3: 42,
+  property4: () => console.log('prop4')  
 }
 
-async function asyncMania(){
-  console.log("1");
-  await wait(1000);
-  console.log("2");
+Object.getOwnPropertyDescriptors(myObj)
+
+/*
+{ property1: {…}, property2: {…}, property3: {…}, property4: {…} }
+  property1: {value: "foo", writable: true, enumerable: true, configurable: true}
+  property2: {value: "bar", writable: true, enumerable: true, configurable: true}
+  property3: {value: 42, writable: true, enumerable: true, configurable: true}
+  property4: {value: ƒ, writable: true, enumerable: true, configurable: true}
+  __proto__: Object
+*/
+```
+
+### `async function`
+
+The asynchronous function returns an `AsyncFunction` object and operates asynchronously via the event loop. The syntax is 
+very similar to synchronous functions
+
+#### Syntax:
+
+* async function name([param[, param[, ... param]]]) { statements }
+* **@name**: the function name
+* **@param**: param of the function
+* **statements**: body of the function
+* **returns**: Promise
+
+```javascript
+const resolveAfter3Seconds = function() {
+  console.log('starting 3 second promsise')
+  return new Promise(resolve => {
+    setTimeout(function() {
+      resolve(3)
+      console.log('done in 3 seconds')  
+    }, 3000)  
+  })  
 }
 
-asyncMania()
-.then(() => console.log("3"));
-
-// logs: 1 2 3
-```
-
-# Async generators
-> Deferred generators.
-
-> Stage: Proposal.
-
-```js
-// provider
-async function* nums() {
-  yield 1;
-  yield 2;
-  yield 3;
+const resolveAfter1Second = function() {
+  console.log('starting 1 second promise')
+  return new Promise(resolve => {
+      setTimeout(function() {
+        resolve(1) 
+        console.log('done, in 1 second') 
+      }, 1000)
+  })  
 }
 
-// consumer
-async function printData() {
-  for(var x on nums()) {
-    console.log(x);
-  }
-}
-```
+const sequentialStart = async function() {
+  console.log('***SEQUENTIAL START***')
+  const one = await resolveAfter1Second()
+  const three = await resolveAfter3Seconds()
 
-# Object.getOwnPropertyDescriptors
-> Returns a property descriptor for an own property.
-
-> Stage: Strawman.
-
-```js
-// Creating a shallow copy.
-var shallowCopy = Object.create(
-  Object.getPrototypeOf(originalObject),
-  Object.getOwnPropertyDescriptors(originalObject)
-);
-```
-
-# Object.values
-> Get all the values of the object as an array.
-
-> Stage: Shall reach Strawman
-
-```js
-var person = { fname: "Hemanth", lname: "HM", location: "Earth", type: "Human" };
-
-Object.values(person);
-
-//^ ["Hemanth","HM","Earth","Human"]
-```
-
-# Object.entries
-> Returns a Array of arrays of key,value pairs.
-
-> Stage: Shall reach Strawman
-
-```js
-var person = { fname: "Hemanth", lname: "HM", location: "Earth", type: "Human" };
-
-Object.entries(person);
-
-//^ [["fname","Hemanth"],["lname","HM"],["location","Earth"],["type","Human"]]
-
-```
-
-# Array.prototype.includes
-> Determines whether an array includes a certain element or not.
-
-> Stage: Draft.
-
-```js
-[1, 2, 3].includes(3, 0, 7); // true
-[1, 2, NaN].includes(NaN); // true
-[0,+1,-1].includes(42); // false
-```
-
-# Typed Objects
-> Portable, memory-safe, efficient, and structured access to contiguously allocated data.
-
-> Stage: Proposal.
-
-```js
-var Point = new StructType({
-  x: int32,
-  y: int32
-});
-
-var point = new Point({
-  x: 42,
-  y: 420
-});
-```
-
-# Trailing commas in function syntax.
-> Trailing commas in parameter and argument lists.
-
-> Stage: Proposal
-
-```js
-var meow = function (cat1, cat2,) {}
-
-Math.max(4,2,0,);
-```
-
-# Class decorators.
-> Annotate and modify classes and properties at design time.
-
-> Stage: Proposal.
-
-```js
-class Person {
-  @cantEnum
-  get kidCount() { return this.children.length; }
+  console.log(one)
+  console.log(three)
 }
 
-function cantEnum(target, name, descriptor) {
-  descriptor.enumerable = false;
-  return descriptor;
-}
-```
-
-# Class properties
-> Properties of class.
-
-> Stage: Strawman.
-
-```js
-class Cat {
-  name = 'Garfield';
-  static says = 'meow';
-}
-new Cat().name; // Garfield
-Cat.says; // meow
-```
-
-# Map.prototype.toJSON
-> `toJSON` for Maps.
-
-> Stage: Strawman.
-
-```js
-var myMap = new Map();
-myMap.set(NaN, "not a number");
-
-console.log(myMap.toJSON()); // {"NaN":"not a number"}
-```
-
-# Set.prototype.toJSON
-> `toJSON` for Sets.
-
-> Stage: Strawman.
-
-```js
-var mySet = new Set();
-mySet.add(NaN);
-mySet.add(1);
-console.log(mySet.toJSON()) // {"1":1,"NaN":null}
-```
-# String.prototype.at
-> String containing the code point at the given position
-
-> Stage: Strawman.
-
-```js
-'abc\uD834\uDF06def'.at(1) // 'b'
-'abc\uD834\uDF06def'.at(3) // '\uD834\uDF06'
-```
-
-# Object rest properties
-> Rest properties for object destructuring assignment.
-
-> Stage: Strawman.
-
-```js
-let { fname, lname, ...rest } = { fname: "Hemanth", lname: "HM", location: "Earth", type: "Human" };
-fname; //"Hemanth"
-lname; //"HM"
-rest; // {location: "Earth", type: "Human"}
-```
-
-# Object spread properties
-> Spread properties for object destructuring assignment.
-
-> Stage: Strawman.
-
-```js
-let info = {fname, lname, ...rest};
-
-info; // { fname: "Hemanth", lname: "HM", location: "Earth", type: "Human" }
-
-```
-
-# String.prototype.padLeft
-> left justify and pad strings.
-
-> Stage: Strawman.
-
-```js
-"hello".padLeft(4)            #=> "hello"
-"hello".padLeft(20)           #=> "hello               "
-"hello".padLeft(20, '1234')   #=> "hello123412341234123"
-```
-
-# String.prototype.padRight
-> right justify and pad strings.
-
-> Stage: Strawman.
-
-```js
-"hello".padRight(4)            #=> "hello"
-"hello".padRight(20)           #=> "               hello"
-"hello".padRight(20, '1234')   #=> "123412341234123hello"
-```
-
-# String.prototype.trimLeft
-> left trims the string.
-
-> Stage: Candidate.
-
-```js
-' \t \n LeftTrim   \t\n'.trimLeft(); // 'LeftTrim   \t\n';
-```
-
-# String.prototype.trimRight
-> right trims the string.
-
-> Stage: Candidate.
-
-```js
-' \t \n RightTrim   \t\n'.trimRight(); // ' \t \n RightTrim';
-```
-
-# Regexp.escape
-> Escapes any characters that would have special meaning in a regular expression.
-
-> Stage: Strawaman
-
-```js
-RegExp.escape("(*.*)"); // "\(\*\.\*\)"
-RegExp.escape("｡^･ｪ･^｡") // "｡\^･ｪ･\^｡"
-RegExp.escape("😊 *_* +_+ ... 👍"); // "😊 \*_\* \+_\+ \.\.\. 👍"
-```
-
-# Bind Operator
-> `::` Function binding and method extraction
-
-> Stage: Shall reach Strawman.
-
-```js
-let log = (level, msg) => ::console[level](msg);
-
-import { map, takeWhile, forEach } from "iterlib";
-
-getPlayers()
-  ::map(x => x.character())
-  ::takeWhile(x => x.strength > 100)
-  ::forEach(x => console.log(x));
+sequentialStart() // invoke async function
 ```
