@@ -1,4 +1,4 @@
-# ECMAScript 7 (ES2016) <sup>[credit](https://github.com/hemanth/es-next)</sup>
+# ECMAScript 7 (ES2016) <sup>[credit](https://www.ecma-international.org/ecma-262/7.0)</sup>
 
 See the [ES7 standard](http://www.ecma-international.org/ecma-262/7.0/) for full specification of the ECMAScript 7 language.
 
