@@ -7,32 +7,62 @@ ES8 includes the following new features:
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Exponentiation Operator](#exponentiation-operator)
-- [Async functions](#async-functions)
-- [Async generators](#async-generators)
-- [Object.getOwnPropertyDescriptors](#objectgetownpropertydescriptors)
-- [Object.values](#objectvalues)
+- [Async functions](#async-function)
 - [Object.entries](#objectentries)
-- [Array.prototype.includes](#arrayprototypeincludes)
-- [Typed Objects](#typed-objects)
+- [Object.values](#objectvalues)
+- [Object.getOwnPropertyDescriptors](#objectgetownpropertydescriptors)
 - [Trailing commas in function syntax.](#trailing-commas-in-function-syntax)
-- [Class decorators.](#class-decorators)
-- [Class properties](#class-properties)
-- [Map.prototype.toJSON](#mapprototypetojson)
-- [Set.prototype.toJSON](#setprototypetojson)
-- [String.prototype.at](#stringprototypeat)
-- [Object rest properties](#object-rest-properties)
-- [Object spread properties](#object-spread-properties)
-- [String.prototype.padLeft](#stringprototypepadleft)
-- [String.prototype.padRight](#stringprototypepadright)
-- [String.prototype.trimLeft](#stringprototypetrimleft)
-- [String.prototype.trimRight](#stringprototypetrimright)
-- [Regexp.escape](#regexpescape)
-- [Bind Operator](#bind-operator)
-- [Reflect.Realm](#reflectrealm)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+---
+
+
+### `async function`
+
+The asynchronous function returns an `AsyncFunction` object and operates asynchronously via the event loop. The syntax is 
+very similar to synchronous functions
+
+#### Syntax:
+
+* async function name([param[, param[, ... param]]]) { statements }
+* **@name**: the function name
+* **@param**: param of the function
+* **statements**: body of the function
+* **returns**: Promise
+
+```javascript
+const resolveAfter3Seconds = function() {
+  console.log('starting 3 second promsise')
+  return new Promise(resolve => {
+    setTimeout(function() {
+      resolve(3)
+      console.log('done in 3 seconds')  
+    }, 3000)  
+  })  
+}
+
+const resolveAfter1Second = function() {
+  console.log('starting 1 second promise')
+  return new Promise(resolve => {
+      setTimeout(function() {
+        resolve(1) 
+        console.log('done, in 1 second') 
+      }, 1000)
+  })  
+}
+
+const sequentialStart = async function() {
+  console.log('***SEQUENTIAL START***')
+  const one = await resolveAfter1Second()
+  const three = await resolveAfter3Seconds()
+
+  console.log(one)
+  console.log(three)
+}
+
+sequentialStart() // invoke async function
+```
 
 ### `Object.entries()`
 
@@ -102,39 +132,6 @@ console.log(Object.values(myStr))
 // => ["L", "u", "f", "t", "h", "a", "n", "s", "a"]
 ```
 
-### `Array.prototype.includes`
-This one is a bit like `indexOf` and very useful to the language by relying on returinng true or false, not `0`. 
-
-
-#### Syntax:
-
-* `arr.inlcudes(searchEl[, fromIndex])`
-* **@searchElement**: the element to search for
-* **@fromIndex**: pos in array at which to begin searching
-* **returns**: Boolean
-
-#### Examples:
-
-> basic examples
-
-```javascript
-[1, 2, 3].includes(-1)                   // false
-[1, 2, 3].includes(1)                    // true
-[1, 2, 3].includes(3, 4)                 // false
-[1, 2, 3].includes(3, 3)                 // false
-[1, 2, NaN].includes(NaN)                // true
-['foo', 'bar', 'quux'].includes('foo')   // true
-['foo', 'bar', 'quux'].includes('norf')  // false
-```
-
-> if `fromIndex` is greater than or equal to the len of array, false is automatically returned
-```javascript
-let arr = ['x', 'y', 'z'];
-
-arr.includes('x', 3)    // false
-arr.includes('z', 100)  // false
-```
-
 ### `String.prototype.padStart()`
 This method, `padStart()` pads the current string (applied from the left) with another string till the
 resulting string reaches the given optional length. 
@@ -199,33 +196,6 @@ Math.pow(5, 2)
 5 ** 2
 ```
 
-### `Trailing Commas`
-Trailing commas are now allowed in JavaScript - they are now ignored
-
-> trailing commas in array
-
-```javascript
-let arr = [
-  10,
-  20,
-  30,
-  40,
-  50,  
-]
-
-arr // [10, 20, 30, 40,  50]
-arr.length // 5 
-```
-
-> trailing commas in object
-```javascript
-const obj = {
-  trailing: 'comma',
-  is: 'allowed',
-  in: 'JavaScript..', 
-}
-```
-
 ### `Object.getOwnPropertyDescriptors()`
 `Object.getOwnPropertyDescriptors()` returns all own property descriptors of a given object. A property descriptor
 is a record with one of the following attributes:
@@ -257,48 +227,30 @@ Object.getOwnPropertyDescriptors(myObj)
 */
 ```
 
-### `async function`
 
-The asynchronous function returns an `AsyncFunction` object and operates asynchronously via the event loop. The syntax is 
-very similar to synchronous functions
+### `Trailing Commas`
+Trailing commas are now allowed in JavaScript - they are now ignored
 
-#### Syntax:
-
-* async function name([param[, param[, ... param]]]) { statements }
-* **@name**: the function name
-* **@param**: param of the function
-* **statements**: body of the function
-* **returns**: Promise
+> trailing commas in array
 
 ```javascript
-const resolveAfter3Seconds = function() {
-  console.log('starting 3 second promsise')
-  return new Promise(resolve => {
-    setTimeout(function() {
-      resolve(3)
-      console.log('done in 3 seconds')  
-    }, 3000)  
-  })  
+let arr = [
+  10,
+  20,
+  30,
+  40,
+  50,  
+]
+
+arr // [10, 20, 30, 40,  50]
+arr.length // 5 
+```
+
+> trailing commas in object
+```javascript
+const obj = {
+  trailing: 'comma',
+  is: 'allowed',
+  in: 'JavaScript..', 
 }
-
-const resolveAfter1Second = function() {
-  console.log('starting 1 second promise')
-  return new Promise(resolve => {
-      setTimeout(function() {
-        resolve(1) 
-        console.log('done, in 1 second') 
-      }, 1000)
-  })  
-}
-
-const sequentialStart = async function() {
-  console.log('***SEQUENTIAL START***')
-  const one = await resolveAfter1Second()
-  const three = await resolveAfter3Seconds()
-
-  console.log(one)
-  console.log(three)
-}
-
-sequentialStart() // invoke async function
 ```
