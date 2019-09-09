@@ -11,7 +11,6 @@ ES11 includes the following new feature proposals:
 - [Object rest properties](#object-rest-properties)
 - [Object spread properties](#object-spread-properties)
 - [Promise.prototype.finally](#promise-prototype-finally)
-- [Regexp.escape](#regexpescape)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 ---
@@ -80,14 +79,4 @@ testFinally().then(() => console.debug("resolved")).finally(() => console.debug(
 // resolved
 // finally
 
-```
-
-# Regexp.escape
-> Escapes any characters that would have special meaning in a regular expression.
-
-
-```js
-RegExp.escape("(*.*)"); // "\(\*\.\*\)"
-RegExp.escape("｡^･ｪ･^｡") // "｡\^･ｪ･\^｡"
-RegExp.escape("😊 *_* +_+ ... 👍"); // "😊 \*_\* \+_\+ \.\.\. 👍"
 ```
