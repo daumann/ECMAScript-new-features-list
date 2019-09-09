@@ -45,6 +45,7 @@ let arr = ['x', 'y', 'z'];
 
 arr.includes('x', 3)    // false
 arr.includes('z', 100)  // false
+```
 
 ### `Exponentiation`
 A shorthand method to exponetiation has been introduced in JavaScript:
