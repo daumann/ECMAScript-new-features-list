@@ -7,7 +7,7 @@ ES11 includes the following new feature proposals:
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Async functions](#async-functions)
+- [Async iterators](#async-iterators)
 - [Object rest properties](#object-rest-properties)
 - [Object spread properties](#object-spread-properties)
 - [Promise.prototype.finally](#promise-prototype-finally)
@@ -15,25 +15,36 @@ ES11 includes the following new feature proposals:
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Async functions
-> Deferred Functions
+# Async iterators
+> Async iterators are like iterators, but this time, next() returns a promise. This promise resolves with the tuple { value, done }. A promise needs to be returned because, at the time, the iterator returns the values of value and done are unknown.
 
 
 ```js
-function wait(t){
-  return new Promise((r) => setTimeout(r, t));
+function asyncIterator() {
+  const array = [1, 2];
+  return {
+    next: function() {
+      if (array.length) {
+        return Promise.resolve({
+          value: array.shift(),
+          done: false
+        });
+      } else {
+        return Promise.resolve({
+          done: true
+        });
+      }
+    }
+  };
 }
 
-async function asyncMania(){
-  console.log("1");
-  await wait(1000);
-  console.log("2");
-}
+var iterator = asyncIterator();
 
-asyncMania()
-.then(() => console.log("3"));
-
-// logs: 1 2 3
+(async function() {
+    await iterator.next().then(console.log); // { value: 1, done: false }
+    await iterator.next().then(console.log); // { value: 2, done: false }
+    await iterator.next().then(console.log); // { done: true }
+})();
 ```
 
 # Object rest properties
