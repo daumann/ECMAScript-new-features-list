@@ -14,6 +14,7 @@ ES11 includes the following new feature proposals:
 - [Regexp.escape](#regexpescape)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+---
 
 # Async iterators
 > Async iterators are like iterators, but this time, next() returns a promise. This promise resolves with the tuple { value, done }. A promise needs to be returned because, at the time, the iterator returns the values of value and done are unknown.
