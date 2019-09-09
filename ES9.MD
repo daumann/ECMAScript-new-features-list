@@ -10,7 +10,7 @@ ES11 includes the following new feature proposals:
 - [Async functions](#async-functions)
 - [Object rest properties](#object-rest-properties)
 - [Object spread properties](#object-spread-properties)
-- [Promise.prototype.finally](#promise-prototype-finallys)
+- [Promise.prototype.finally](#promise-prototype-finally)
 - [Regexp.escape](#regexpescape)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
