@@ -1,6 +1,6 @@
-# ES NEXT (ES2019) <sup>[credit](https://github.com/hemanth/es-next)</sup>
+# ES NEXT (ES2018) <sup>[credit](https://github.com/hemanth/es-next)</sup>
 
-See the [ES11 standard](http://www.ecma-international.org/ecma-262/7.0/) for full specification of the ECMAScript 7 language.
+See the [ES9 standard](http://www.ecma-international.org/ecma-262/9.0/) for full specification of the ECMAScript 9 language.
 
 ES11 includes the following new feature proposals:
 
@@ -11,15 +11,12 @@ ES11 includes the following new feature proposals:
 - [Object rest properties](#object-rest-properties)
 - [Object spread properties](#object-spread-properties)
 - [Regexp.escape](#regexpescape)
-- [Bind Operator](#bind-operator)
-- [Reflect.Realm](#reflectrealm)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Async functions
 > Deferred Functions
 
-> Stage: Proposal.
 
 ```js
 function wait(t){
@@ -40,8 +37,6 @@ asyncMania()
 
 # Object rest properties
 > Rest properties for object destructuring assignment.
-
-> Stage: Strawman.
 
 ```js
 let { fname, lname, ...rest } = { fname: "Hemanth", lname: "HM", location: "Earth", type: "Human" };
@@ -65,7 +60,6 @@ info; // { fname: "Hemanth", lname: "HM", location: "Earth", type: "Human" }
 # Regexp.escape
 > Escapes any characters that would have special meaning in a regular expression.
 
-> Stage: Strawaman
 
 ```js
 RegExp.escape("(*.*)"); // "\(\*\.\*\)"
