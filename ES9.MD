@@ -1,4 +1,4 @@
-# ES NEXT (ES2018) <sup>[credit](https://github.com/hemanth/es-next)</sup>
+# ES9 (ES2018)
 
 See the [ES9 standard](http://www.ecma-international.org/ecma-262/9.0/) for full specification of the ECMAScript 9 language.
 
