@@ -64,7 +64,7 @@ function testFinally() {
   return new Promise((resolve,reject) => resolve())
 }
 
-testF().then(() => console.debug("resolved")).finally(() => console.debug("finally"))
+testFinally().then(() => console.debug("resolved")).finally(() => console.debug("finally"))
 // resolved
 // finally
 
