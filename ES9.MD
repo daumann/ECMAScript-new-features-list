@@ -10,6 +10,7 @@ ES11 includes the following new feature proposals:
 - [Async functions](#async-functions)
 - [Object rest properties](#object-rest-properties)
 - [Object spread properties](#object-spread-properties)
+- [Promise.prototype.finally](#promise-prototype-finallys)
 - [Regexp.escape](#regexpescape)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -48,12 +49,24 @@ rest; // {location: "Earth", type: "Human"}
 # Object spread properties
 > Spread properties for object destructuring assignment.
 
-> Stage: Strawman.
-
 ```js
 let info = {fname, lname, ...rest};
 
 info; // { fname: "Hemanth", lname: "HM", location: "Earth", type: "Human" }
+
+```
+
+# Promise prototype finally
+> Promise API is extended by an optional *finally* block which is called in any case (after the Promise is resolves or is rejected).
+
+```js
+function testFinally() {
+  return new Promise((resolve,reject) => resolve())
+}
+
+testF().then(() => console.debug("resolved")).finally(() => console.debug("finally"))
+// resolved
+// finally
 
 ```
 
