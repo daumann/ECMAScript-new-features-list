@@ -1,4 +1,4 @@
-# ECMAScript-new-features-list
+# Lists and examples for new Javascript features
 A comprehensive list of new ES features, including ES6, ES7, ES8, ES9 and ES10 (2015-2019)
 
 * [ES2015 (ES6) feature list and examples](ES2015.MD)
