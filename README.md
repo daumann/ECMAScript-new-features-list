@@ -23,4 +23,4 @@ https://medium.com/@madasamy/javascript-brief-history-and-ecmascript-es6-es7-es8
 ---
 This repo will be updated with future ES releases.
 
-If you find mistakes or would like to contribute examples/ descriptions, please open an **issue** or **pull request**.
+If you find any mistakes or you would like to contribute examples/ descriptions, please open an **issue** or **pull request**.
