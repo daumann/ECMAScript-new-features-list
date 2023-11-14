@@ -9,6 +9,8 @@ A comprehensive list of new ES features, including ES2015 (ES6), ES2016, ES2017,
 - [ES2019 feature list and examples](ES2019.MD)
 - [ES2020 feature list and examples](ES2020.MD)
 - [ES2021 feature list and examples](ES2021.MD)
+- [ES2022 feature list and examples](ES2022.MD)
+- [ES2023 feature list and examples](ES2023.MD)
 
 ---
 
@@ -23,6 +25,8 @@ https://www.udemy.com/course/es6-es7-and-es8-its-time-to-update-your-javascript/
 https://github.com/tc39
 
 https://medium.com/@madasamy/javascript-brief-history-and-ecmascript-es6-es7-es8-features-673973394df4
+
+Hemanth's excelent ES series at https://h3manth.com/
 
 ---
 
