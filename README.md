@@ -26,7 +26,7 @@ https://github.com/tc39
 
 https://medium.com/@madasamy/javascript-brief-history-and-ecmascript-es6-es7-es8-features-673973394df4
 
-Hemanth's excelent ES series at https://h3manth.com/
+Hemanth's excellent ES series at https://h3manth.com/
 
 ---
 
